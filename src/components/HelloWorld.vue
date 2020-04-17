@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <span>What is 2^6 * 0</span>
+    <span>{{question}}</span>
     <input v-model="value" type="number" name="answer"/>
     <button @click="assert">Check</button>
   </div>
@@ -11,7 +11,8 @@ const axios = require('axios');
 export default {
   name: 'HelloWorld',
   props: {
-    url: String
+    url: String,
+    question: String
   },
   data: () => ({
     value: "",
@@ -20,6 +21,7 @@ export default {
   methods: {
     assert() {
       axios({
+        baseURL: window.location.origin,
         url: this.url,
         method: 'post',
         headers: {
@@ -27,7 +29,7 @@ export default {
           'Content-Type': "application/x-www-form-urlencoded; charset=UTF-8"
         },
         data: JSON.stringify({
-          answer: Number.parseInt(this.value)
+          answer: this.value
         })
       })
     }
