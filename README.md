@@ -1,24 +1,26 @@
-# xblock-template
+# vue-xblock
 
-## Project setup
-```
-npm install
-```
+## Сборка
 
-### Compiles and hot-reloads for development
+```shell script
+npm run build:wc
 ```
-npm run serve
-```
+**Имя/префикс компонентов:** vue-foo
 
-### Compiles and minifies for production
-```
-npm run build
-```
+*Префикс нужен для использования компонентов, как html тэгов.
+О том, как строятся тэги на основе этого можно посмотреть в 
+[официальной документации](https://cli.vuejs.org/guide/build-targets.html#bundle-that-registers-multiple-web-components)*
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Собирает проект как набор web-компонентов. Берутся все компоненты из директории **src/components**
+- С помощью ```CopyWebpackPlugin``` в **dist/** добавляются исправленный UMD Vue runtime и JQuery инициализация
+- ```App.vue``` и ```main.js``` не участвуют в сборке
+
+
+## Workaround
+
+- Собирать с помощью **webpack** структуру директорий, как этого требует XBlock  
+- Генерировать JQuery инициализацию на основе данных о проекте (package.json)
+- Генерировать html файлы в виде Django шаблонов для каждого компонента к сборке. Можно попробовать учитывать список ```props``` для компонента и генерировать аттрибуты для тэгов в шаблоне
+
+

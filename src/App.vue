@@ -1,8 +1,5 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorldEditor url="123"/>
-  </div>
+  <HelloWorldEditor url="123"/>
 </template>
 
 <script>

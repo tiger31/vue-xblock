@@ -6,7 +6,7 @@ module.exports = {
 	configureWebpack: {
 		plugins:[
 			new CopyPlugin([
-				{ from: 'node_modules/vue/dist/vue.min.js', to: "vue.js" },
+				{ from: 'public/vue.js', to: "vue.js" },
 				{ from: 'public/init.js', to: `${__XBLOCK_INIT_JS_FILE__}` }
 			])
 		],
